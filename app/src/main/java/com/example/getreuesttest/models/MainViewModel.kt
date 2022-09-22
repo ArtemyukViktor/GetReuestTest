@@ -1,28 +1,44 @@
 package com.example.getreuesttest.models
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.ViewModel
-import com.example.getreuesttest.pojoWewather.WeatherPojo
-
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.getreuesttest.pojoWeather.WeatherPojo
 import com.example.getreuesttest.repositories.MainRepository
+import com.example.getreuesttest.repositorise.Repository
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel constructor(private val mainRepository: MainRepository) : ViewModel() {
+class MainViewModel constructor(private val mainRepository: MainRepository,
+                                application: Application
+) : AndroidViewModel(application) {
+
+    private var repository: Repository
+    var getWeatherFrom_d_b: LiveData<WeatherPojo>
+
+    init {
+        repository = Repository(application)
+        getWeatherFrom_d_b = repository.allCats
+    }
+
+    fun insert(cats: WeatherPojo?) {
+       repository.insert(cats)
+    }
+
+    fun getWeatherFrom_d_b(): LiveData<WeatherPojo>? {
+        return getWeatherFrom_d_b
+    }
+
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     private var job: Job? = null
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
-    private val _weatherPojo = MutableLiveData<WeatherPojo>()
-
-    val weatherPojo: LiveData<WeatherPojo>
-        get() = _weatherPojo
 
 
     fun getWeather(location: String, units: String) {
@@ -33,8 +49,8 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
                         call: Call<WeatherPojo>,
                         response: Response<WeatherPojo>
                     ) {
-                        Log.d("weatherTag", "onResponse: " + response.body().toString())
-                        _weatherPojo.postValue(response.body())
+                        Log.d("weatherTag", "onResponse: SERVER " + response.body().toString())
+                        insert(response.body())
                         loading.value = false
                     }
 

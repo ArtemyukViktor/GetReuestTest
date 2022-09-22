@@ -1,4 +1,4 @@
-package com.example.getreuesttest.pojoWewather
+package com.example.getreuesttest.pojoWeather
 
 
 import com.google.gson.annotations.SerializedName

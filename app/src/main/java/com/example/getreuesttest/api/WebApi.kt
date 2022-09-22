@@ -1,6 +1,6 @@
 package com.example.getreuesttest.api
 
-import com.example.getreuesttest.pojoWewather.WeatherPojo
+import com.example.getreuesttest.pojoWeather.WeatherPojo
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
