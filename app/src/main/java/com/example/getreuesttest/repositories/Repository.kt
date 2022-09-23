@@ -1,4 +1,4 @@
-package com.example.getreuesttest.repositorise
+package com.example.getreuesttest.repositories
 
 import android.app.Application
 import android.os.AsyncTask

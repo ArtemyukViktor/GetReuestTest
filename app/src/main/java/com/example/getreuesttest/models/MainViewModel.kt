@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.getreuesttest.pojoWeather.WeatherPojo
 import com.example.getreuesttest.repositories.MainRepository
-import com.example.getreuesttest.repositorise.Repository
+import com.example.getreuesttest.repositories.Repository
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback

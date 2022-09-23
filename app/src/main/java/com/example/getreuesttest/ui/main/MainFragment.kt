@@ -63,13 +63,9 @@ class MainFragment : Fragment() {
 
         viewModel.getWeatherFrom_d_b()?.observe(
             viewLifecycleOwner
-        ) { cats ->
-            if (cats?.base != null) {
-                textView.text = cats.base
-            } else {
-                textView.text = "DB is empty"
-            }
-            Log.d("weatherTag", "onChanged DB: $cats")
+        ) { weather ->
+            textView.text = weather.main.temp.toString()
+            Log.d("weatherTag", "onChanged DB: $weather")
         }
     }
 

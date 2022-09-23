@@ -2,8 +2,6 @@ package com.example.getreuesttest.pojoWeather
 
 
 import androidx.room.*
-import com.example.getreuesttest.converters.Converter
-import com.example.getreuesttest.room.Converters
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "weather_table", indices = [Index(value = ["id"], unique = true)])
@@ -24,8 +22,7 @@ data class WeatherPojo(
     val sys: Sys,
     val timezone: Int,
     val visibility: Int,
-//    @TypeConverters(Converter::class)
-//    val weather: List<Weather>? = listOf(),
+    val weather: List<Weather>? = listOf(),
     @Embedded
     val wind: Wind
 )

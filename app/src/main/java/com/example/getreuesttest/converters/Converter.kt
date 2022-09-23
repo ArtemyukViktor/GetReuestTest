@@ -9,6 +9,7 @@ import java.lang.reflect.Type
 import java.util.*
 
 class Converter {
+    @TypeConverter
     fun stringToListServer(data: String?): List<Weather?>? {
         if (data == null) {
             return Collections.emptyList()
