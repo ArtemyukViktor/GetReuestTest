@@ -10,10 +10,10 @@ import com.example.getreuesttest.pojoWeather.WeatherPojo
 @Dao
 interface AppDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(cats: WeatherPojo?)
+    fun insert(weatherPojo: WeatherPojo?)
 
     @Query("SELECT DISTINCT * FROM weather_table")
-    fun getcats(): LiveData<WeatherPojo>
+    fun getLiveDataWeather(): LiveData<WeatherPojo>
 
     @Query("DELETE FROM weather_table")
     fun deleteAll()

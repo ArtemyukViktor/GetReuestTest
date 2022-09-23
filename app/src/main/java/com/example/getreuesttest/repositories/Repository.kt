@@ -13,16 +13,16 @@ class Repository(application: Application?) {
     private val database: AppDatabase
     init {
         database = AppDatabase.getInstance(application)!!
-        appDao = database.catimgDao()
-        getWeatherFrom_d_b = appDao.getcats()
+        appDao = database.appDao()
+        getWeatherFrom_d_b = appDao.getLiveDataWeather()
     }
 
-    fun insert(cats: WeatherPojo?) {
+    fun insert(weatherPojo: WeatherPojo?) {
 
-        InsertAsyncTask(appDao).execute(cats)
+        InsertAsyncTask(appDao).execute(weatherPojo)
     }
 
-    val allCats: LiveData<WeatherPojo>
+    val allDataWeatherFrom_d_b: LiveData<WeatherPojo>
         get() = getWeatherFrom_d_b
 
 

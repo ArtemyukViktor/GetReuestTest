@@ -13,13 +13,13 @@ import com.example.getreuesttest.pojoWeather.WeatherPojo
 @Database(entities = [WeatherPojo::class], version = 1,exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun catimgDao(): AppDao
-    internal class PopulateDbAsyn(catDatabase: AppDatabase?) :
+    abstract fun appDao(): AppDao
+    internal class PopulateDbAsyn(appDatabase: AppDatabase?) :
         AsyncTask<Void?, Void?, Void?>() {
         private val appDao: AppDao
 
         init {
-            appDao = catDatabase!!.catimgDao()
+            appDao = appDatabase!!.appDao()
         }
 
         override fun doInBackground(vararg p0: Void?): Void? {

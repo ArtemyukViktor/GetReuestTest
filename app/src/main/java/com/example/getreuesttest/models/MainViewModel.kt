@@ -22,11 +22,11 @@ class MainViewModel constructor(private val mainRepository: MainRepository,
 
     init {
         repository = Repository(application)
-        getWeatherFrom_d_b = repository.allCats
+        getWeatherFrom_d_b = repository.allDataWeatherFrom_d_b
     }
 
-    fun insert(cats: WeatherPojo?) {
-       repository.insert(cats)
+    fun insert(weatherPojo: WeatherPojo?) {
+       repository.insert(weatherPojo)
     }
 
     fun getWeatherFrom_d_b(): LiveData<WeatherPojo>? {
